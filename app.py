@@ -21,6 +21,9 @@ mongo = PyMongo(app)
 # Or set inline
 # mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 
+#This is not recommended in production
+#What would happen is every time you visit the root route it would load the DB again with all the data
+#
 @app.route("/", methods=["GET"])
 def index():
     dogcollection = mongo.db.alldogs 
