@@ -2,3 +2,5 @@ flask
 bson
 flask_pymongo
 flask_cors
+requests
+json
