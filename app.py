@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, Response, jsonify
+from flask import Flask, Response, jsonify
 from bson import json_util
 from flask_pymongo import PyMongo
 from flask_cors import CORS, cross_origin
@@ -15,7 +15,8 @@ CORS(app, resources={
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['CORS_ORIGINS'] = '*'
 # Use flask_pymongo to set up mongo connection
-app.config["MONGO_URI"] = "mongodb://localhost:27017/dogs"
+# app.config["MONGO_URI"] = "mongodb://localhost:27017/dogs"
+app.config["MONGO_URI"] = "mongodb+srv://admin:N!ck40o0@sampleapicluster.xkn27.mongodb.net/dogs?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
 # Or set inline
@@ -24,22 +25,19 @@ mongo = PyMongo(app)
 #This is not recommended in production
 #What would happen is every time you visit the root route it would load the DB again with all the data
 #
-@app.route("/", methods=["GET"])
+@app.route("/loadDB/", methods=["GET"])
 def index():
     dogcollection = mongo.db.alldogs 
+    dogcollection.drop()
     response = requests.get("https://dog.ceo/api/breeds/list/all")
-    # print(response.json())
     responseJson = response.json()
-    dogcollection.insert(responseJson)
-    # return render_template("index.html", mars=mars)
+    dogcollection.insert_one(responseJson)
 
 
-@app.route("/allbreeds/", methods=['GET'])
+@app.route("/allbreeds/", methods=['GET', 'POST'])
 @cross_origin()
 def allbreeds():
     dogdb = mongo.db.alldogs
-    # mars_data = scrape_mars.scrape_all()
-    # mars.update({}, mars_data, upsert=True)
     alldogs = dogdb.find({})
     dogsjson = json.loads(json_util.dumps(alldogs))
     return jsonify(dogsjson)
