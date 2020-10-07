@@ -2,4 +2,5 @@ flask
 bson
 flask_pymongo
 flask_cors
+dnspython
 requests
