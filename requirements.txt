@@ -1,4 +1,4 @@
 flask
-flask_pymongo
 bson
+flask_pymongo
 flask_cors

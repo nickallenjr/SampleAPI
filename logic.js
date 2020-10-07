@@ -14,10 +14,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   
 
-d3.request("/loadDB/").get(res => {
+d3.request("http://127.0.0.1:5000/loadDB").get(res => {
     console.log('DB Loaded Successfully');
 
-    d3.request("/allbreeds/").get(allBreedsData => {
+    d3.request("http://127.0.0.1:5000/allbreeds").get(allBreedsData => {
         console.log(JSON.parse(allBreedsData.response));
     })
 })
