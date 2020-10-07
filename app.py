@@ -1,4 +1,4 @@
-from flask import Flask, Response, jsonify
+from flask import Flask, Response, jsonify, render_template
 from bson import json_util
 from flask_pymongo import PyMongo
 from flask_cors import CORS, cross_origin
@@ -24,7 +24,12 @@ mongo = PyMongo(app)
 
 #This is not recommended in production
 #What would happen is every time you visit the root route it would load the DB again with all the data
-#
+@app.route("/", methods=["GET"])
+def root():
+    return render_template("index.html")
+
+
+
 @app.route("/loadDB/", methods=["GET"])
 def index():
     dogcollection = mongo.db.alldogs 
