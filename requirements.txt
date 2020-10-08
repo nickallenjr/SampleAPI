@@ -1,5 +1,6 @@
 flask
 gunicorn
+whitenoise
 bson
 flask_pymongo
 flask_cors
