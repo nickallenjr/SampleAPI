@@ -9,7 +9,7 @@ import os
 
 
 app = Flask(__name__, static_url_path='')
-app.wsgi_app = WhiteNoise(app.wsgi_app, root='static/', prefix='https://pure-retreat-73131.herokuapp.com/')
+app.wsgi_app = WhiteNoise(app.wsgi_app, root='static/')
 CORS(app, resources={
     r"/*": {
         "origins": "*"
