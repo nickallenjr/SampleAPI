@@ -1,4 +1,4 @@
-from flask import Flask, Response, jsonify, render_template
+from flask import Flask, Response, jsonify
 from bson import json_util
 from flask_pymongo import PyMongo
 from flask_cors import CORS, cross_origin
@@ -16,14 +16,16 @@ CORS(app, resources={
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['CORS_ORIGINS'] = '*'
 # Use flask_pymongo to set up mongo connection
+# Local MongoDB connection
 # app.config["MONGO_URI"] = "mongodb://localhost:27017/dogs"
+
+#Web Hosted MongoDB
 app.config["MONGO_URI"] = "mongodb+srv://admin:N!ck40o0@sampleapicluster.xkn27.mongodb.net/dogs?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
 # Or set inline
 # mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 
-#This is not recommended in production
 @app.route('/', methods=["GET", "POST"])
 def root():
     # return render_template('index.html')
