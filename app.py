@@ -5,10 +5,12 @@ from flask_pymongo import PyMongo
 from flask_cors import CORS, cross_origin
 import requests
 import json
+import os
 
 
-app = Flask(__name__, static_url_path='', static_folder='static')
-app.wsgi_app = WhiteNoise(app.wsgi_app, root='static/')
+app = Flask(__name__, static_url_path='')
+app.wsgi_app = WhiteNoise(app.wsgi_app, root=os.path.join(os.path.dirname(__file__), 'static'),
+        prefix='static/')
 CORS(app, resources={
     r"/*": {
         "origins": "*"
