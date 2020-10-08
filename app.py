@@ -1,4 +1,4 @@
-from flask import Flask, Response, jsonify
+from flask import Flask, Response, jsonify, render_template
 from bson import json_util
 from flask_pymongo import PyMongo
 from flask_cors import CORS, cross_origin
@@ -19,7 +19,7 @@ app.config['CORS_ORIGINS'] = '*'
 # Local MongoDB connection
 # app.config["MONGO_URI"] = "mongodb://localhost:27017/dogs"
 
-#Web Hosted MongoDB
+# Web Hosted MongoDB
 app.config["MONGO_URI"] = "mongodb+srv://admin:N!ck40o0@sampleapicluster.xkn27.mongodb.net/dogs?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
