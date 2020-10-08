@@ -6,12 +6,13 @@ import requests
 import json
 
 
-app = Flask(__name__, static_url_path='https://pure-retreat-73131.herokuapp.com/', static_folder='app/static')
+app = Flask(__name__, static_url_path='', static_folder='static')
 CORS(app, resources={
     r"/*": {
         "origins": "*"
     }
 })
+
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['CORS_ORIGINS'] = '*'
 # Use flask_pymongo to set up mongo connection
