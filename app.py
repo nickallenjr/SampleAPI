@@ -1,4 +1,4 @@
-from flask import Flask, Response, jsonify, render_template, send_from_directory
+from flask import Flask, Response, jsonify, render_template
 from bson import json_util
 from flask_pymongo import PyMongo
 from flask_cors import CORS, cross_origin
