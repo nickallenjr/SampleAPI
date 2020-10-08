@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   
 
 d3.request("/loadDB/").get(res => {
-    console.log('DB Loaded Successfully');
+    console.log(res.response);
 
     d3.request("/allbreeds/").get(allBreedsData => {
         console.log(JSON.parse(allBreedsData.response));
