@@ -26,7 +26,8 @@ mongo = PyMongo(app)
 #This is not recommended in production
 @app.route('/', methods=["GET", "POST"])
 def root():
-    return render_template('index.html')
+    # return render_template('index.html')
+    app.send_static_file("index.html")
 
 
 @app.route("/loadDB/", methods=["GET"])
