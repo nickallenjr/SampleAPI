@@ -24,10 +24,9 @@ mongo = PyMongo(app)
 # mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
 
 #This is not recommended in production
-#What would happen is every time you visit the root route it would load the DB again with all the data
-@app.route('/', methods=["GET", "POST"])
-def root():
-    return render_template('index.html')
+# @app.route('/', methods=["GET", "POST"])
+# def root():
+#     return render_template('index.html')
 
 
 @app.route("/loadDB/", methods=["GET"])
