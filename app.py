@@ -39,7 +39,6 @@ def index():
     response = requests.get("https://dog.ceo/api/breeds/list/all")
     responseJson = response.json()
     dogcollection.insert_one(responseJson)
-    return ("DB Loaded")
 
 
 @app.route("/allbreeds/", methods=['GET', 'POST'])
