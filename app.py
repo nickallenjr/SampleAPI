@@ -6,7 +6,7 @@ import requests
 import json
 
 
-app = Flask(__name__, static_url_path='')
+app = Flask(__name__, static_url_path='', static_folder='app/static')
 CORS(app, resources={
     r"/*": {
         "origins": "*"
@@ -24,9 +24,9 @@ mongo = PyMongo(app)
 
 #This is not recommended in production
 #What would happen is every time you visit the root route it would load the DB again with all the data
-@app.route('/', methods=["GET", "POST"])
-def root():
-    return app.send_from_directory('index.html')
+# @app.route('/', methods=["GET", "POST"])
+# def root():
+#     return send_from_directory('index.html')
 
 
 @app.route("/loadDB/", methods=["GET"])
