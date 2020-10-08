@@ -1,15 +1,12 @@
 from flask import Flask, Response, jsonify, render_template, send_from_directory
-from whitenoise import WhiteNoise
 from bson import json_util
 from flask_pymongo import PyMongo
 from flask_cors import CORS, cross_origin
 import requests
 import json
-import os
 
 
-app = Flask(__name__, static_url_path='')
-app.wsgi_app = WhiteNoise(app.wsgi_app, root='static/')
+app = Flask(__name__, static_url_path='', static_folder='static')
 CORS(app, resources={
     r"/*": {
         "origins": "*"
